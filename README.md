@@ -1,2 +1,2 @@
 # kbus
-Event sourcing + CQRS in Kotlin
+CQRS in Kotlin
