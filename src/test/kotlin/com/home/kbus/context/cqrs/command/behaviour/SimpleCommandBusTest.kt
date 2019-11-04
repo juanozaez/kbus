@@ -15,7 +15,7 @@ class SimpleCommandBusTest {
 
     @Test
     fun `it should handle a command`() {
-        commandBus.register(commandHandler, SimpleCommand::class)
+        commandBus.register(commandHandler)
         val command = SimpleCommand()
 
         commandBus.handle(command)
@@ -34,6 +34,7 @@ class SimpleCommandBusTest {
 class SimpleCommand : Command
 class SimpleCommandHandler : CommandHandler {
     var command: Command? = null
+    override fun subscribedCommand() = SimpleCommand::class
     override fun handle(command: Command) {
         this.command = command
     }

@@ -9,8 +9,8 @@ import kotlin.reflect.KClass
 class SimpleCommandBus : CommandBus {
     private val commandHandlers: MutableMap<KClass<*>, CommandHandler> = mutableMapOf()
 
-    override fun register(commandHandler: CommandHandler, command: KClass<*>) {
-        commandHandlers[command] = commandHandler
+    override fun register(commandHandler: CommandHandler) {
+        commandHandlers[commandHandler.subscribedCommand()] = commandHandler
     }
 
     override fun handle(command: Command) {
