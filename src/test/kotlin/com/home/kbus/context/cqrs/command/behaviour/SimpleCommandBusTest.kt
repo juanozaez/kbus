@@ -4,15 +4,14 @@ import com.home.kbus.context.cqrs.command.domain.Command
 import com.home.kbus.context.cqrs.command.domain.CommandHandler
 import com.home.kbus.context.cqrs.command.domain.NoCommandHandlerForCommandException
 import com.home.kbus.context.cqrs.command.infrastructure.SimpleCommandBus
-import io.mockk.mockk
-import io.mockk.verify
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class SimpleCommandBusTest {
 
     private val commandBus = SimpleCommandBus()
-    private val commandHandler: CommandHandler = mockk(relaxed = true)
+    private val commandHandler = SimpleCommandHandler()
 
     @Test
     fun `it should handle a command`() {
@@ -21,7 +20,7 @@ class SimpleCommandBusTest {
 
         commandBus.handle(command)
 
-        verify { commandHandler.handle(command) }
+        Assertions.assertEquals(commandHandler.command, command)
     }
 
     @Test
@@ -33,3 +32,9 @@ class SimpleCommandBusTest {
 }
 
 class SimpleCommand : Command
+class SimpleCommandHandler : CommandHandler {
+    var command: Command? = null
+    override fun handle(command: Command) {
+        this.command = command
+    }
+}
