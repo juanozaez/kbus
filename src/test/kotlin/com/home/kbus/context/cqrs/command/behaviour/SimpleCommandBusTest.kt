@@ -4,7 +4,7 @@ import com.home.kbus.context.cqrs.command.domain.Command
 import com.home.kbus.context.cqrs.command.domain.CommandHandler
 import com.home.kbus.context.cqrs.command.domain.NoCommandHandlerForCommandException
 import com.home.kbus.context.cqrs.command.infrastructure.SimpleCommandBus
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -20,7 +20,7 @@ class SimpleCommandBusTest {
 
         commandBus.handle(command)
 
-        Assertions.assertEquals(commandHandler.command, command)
+        assertEquals(commandHandler.command, command)
     }
 
     @Test
