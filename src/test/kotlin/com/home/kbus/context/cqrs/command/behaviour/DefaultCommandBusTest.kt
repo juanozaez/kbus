@@ -3,14 +3,14 @@ package com.home.kbus.context.cqrs.command.behaviour
 import com.home.kbus.context.cqrs.command.domain.Command
 import com.home.kbus.context.cqrs.command.domain.CommandHandler
 import com.home.kbus.context.cqrs.command.domain.NoCommandHandlerForCommandException
-import com.home.kbus.context.cqrs.command.infrastructure.SimpleCommandBus
+import com.home.kbus.context.cqrs.command.infrastructure.DefaultCommandBus
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class SimpleCommandBusTest {
 
-    private val commandBus = SimpleCommandBus()
+    private val commandBus = DefaultCommandBus()
     private val commandHandler = SimpleCommandHandler()
 
     @Test

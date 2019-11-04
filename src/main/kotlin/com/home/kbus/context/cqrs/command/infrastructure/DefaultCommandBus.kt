@@ -6,7 +6,7 @@ import com.home.kbus.context.cqrs.command.domain.CommandHandler
 import com.home.kbus.context.cqrs.command.domain.NoCommandHandlerForCommandException
 import kotlin.reflect.KClass
 
-class SimpleCommandBus : CommandBus {
+class DefaultCommandBus : CommandBus {
     private val commandHandlers: MutableMap<KClass<*>, CommandHandler> = mutableMapOf()
 
     override fun register(commandHandler: CommandHandler) {
