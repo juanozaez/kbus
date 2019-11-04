@@ -4,5 +4,5 @@ import kotlin.reflect.KClass
 
 interface CommandHandler {
     fun handle(command: Command)
-    fun subscribedCommand(): KClass<out Command >
+    fun subscribedCommand(): KClass<out Command>
 }
