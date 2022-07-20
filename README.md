@@ -1,2 +1,2 @@
 # kbus
-CQRS in Kotlin
+Command bus and Query bus
